@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Spillhylla</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{--sun:#FFE45E;--ink:#22113A;--ar:#FF5D73;--er:#13C2B0;--ir:#8A6CFF;
+  --bg:var(--sun);--card:#FFFBEA;--text:var(--ink);--muted:#5b4a73;--line:#22113A;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#21143A;--card:#33234F;--text:#FFF4C2;--muted:#cdbdf2;--line:#0c0619}}
+:root[data-theme="dark"]{--bg:#21143A;--card:#33234F;--text:#FFF4C2;--muted:#cdbdf2;--line:#0c0619}
+*{box-sizing:border-box}
+html{height:100%}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--text);
+  font-family:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;-webkit-tap-highlight-color:transparent}
+main{max-width:560px;margin:0 auto;padding:28px 18px 40px}
+h1{margin:8px 0 6px;font-size:clamp(52px,16vw,88px);font-weight:800;line-height:.95;letter-spacing:-.02em;
+  color:var(--card);-webkit-text-stroke:3px var(--line);text-shadow:0 6px 0 var(--line);transform:rotate(-2deg)}
+.lead{font-size:20px;font-weight:500;margin:16px 0 28px;color:var(--text)}
+.games{display:grid;gap:16px}
+.game{display:grid;grid-template-columns:64px 1fr;gap:4px 14px;align-items:center;padding:16px 18px;
+  text-decoration:none;color:var(--text);background:var(--card);border:3px solid var(--line);border-radius:22px;
+  box-shadow:0 6px 0 var(--line);transition:transform .08s,box-shadow .08s}
+.game:active{transform:translateY(5px);box-shadow:0 1px 0 var(--line)}
+.game:focus-visible{outline:4px solid var(--ir);outline-offset:3px}
+.game .em{grid-row:span 2;width:64px;height:64px;display:grid;place-items:center;font-size:36px;
+  border:3px solid var(--line);border-radius:18px;background:var(--c)}
+.game .t{font-size:24px;font-weight:800}
+.game .d{font-size:16px;color:var(--muted)}
+.soon{border:3px dashed var(--line);border-radius:22px;padding:18px;text-align:center;font-size:18px;font-weight:500;color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+  <h1>Spillhylla</h1>
+  <p class="lead">Velg et spill og sett i gang!</p>
+  <div class="games" id="games"></div>
+</main>
+<script>
+/* Legg til nye spill her: én linje per spill */
+const GAMES = [
+  { href: 'spansk/', emoji: '💃', color: '#FF5D73', title: '¡Verbos!', desc: 'Spansk: AR-, ER- og IR-verb, hilsner, navn og alder' },
+];
+document.getElementById('games').innerHTML =
+  GAMES.map(g => `<a class="game" href="${g.href}"><span class="em" style="--c:${g.color}">${g.emoji}</span><span class="t">${g.title}</span><span class="d">${g.desc}</span></a>`).join('')
+  + '<div class="soon">Flere spill kommer ✨</div>';
+</script>
+</body>
+</html>
